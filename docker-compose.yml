@@ -1,0 +1,17 @@
+version: "2.2"
+
+services:
+  dev:
+    image: gradle:4.7.0-jdk8
+    working_dir: /app
+    environment:
+      APP_ENV: staging
+    volumes:
+      - ".:/app"
+      - "gradle-cache:/home/gradle/.gradle"
+    ports:
+      - "8080:8080"
+    command: gradle bootRun
+
+volumes:
+  gradle-cache:
