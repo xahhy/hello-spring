@@ -1,3 +1,6 @@
 #! /bin/bash -e
 
-./dev gradle test
+PWD=`dirname ${BASH_SOURCE[0]}`
+echo $PWD
+
+${PWD}/dev gradle test
