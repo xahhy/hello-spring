@@ -10,7 +10,7 @@ services:
       - ".:/app"
       - "gradle-cache:/home/gradle/.gradle"
     ports:
-      - "8080:8080"
+      - "8083:8080"
     command: gradle bootRun
 
 volumes:
