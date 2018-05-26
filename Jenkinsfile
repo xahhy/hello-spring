@@ -7,13 +7,13 @@ pipeline {
       }
     }
     stage('Release') {
-      when {branch 'production'}
+      when {branch 'master'}
       steps {
         sh './auto/release'
       }
     }
     stage('Staging') {
-      when {branch 'production'}
+      when {branch 'master'}
       environment {
         PORT = '81'
         APP_ENV = 'staging'
@@ -23,9 +23,9 @@ pipeline {
       }
     }
     stage('Production') {
-      when {branch 'production'}
+      when {branch 'master'}
       environment {
-        APP_ENV = 'production'
+        APP_ENV = 'prod'
         PORT = '80'
       }
       steps {
