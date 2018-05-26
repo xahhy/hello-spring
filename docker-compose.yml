@@ -1,7 +1,7 @@
 version: "2.2"
 
 services:
-  dev:
+  _base:
     image: gradle:4.7.0-jdk8
     working_dir: /app
     environment:
@@ -9,9 +9,18 @@ services:
     volumes:
       - ".:/app"
       - "gradle-cache:/home/gradle/.gradle"
+
+  dev:
+    extends:
+      service: _base
     ports:
-      - "8083:8080"
+      - "8080:8080"
     command: gradle bootRun
+
+  build:
+    extends:
+      service: _base
+    command: gradle test
 
 volumes:
   gradle-cache:
