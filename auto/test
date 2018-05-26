@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
 PWD=`dirname ${BASH_SOURCE[0]}`
-echo $PWD
 
-${PWD}/dev gradle test
+docker-compose down --remove-orphans
+docker-compose run --rm --service-ports build ${@-gradle test}

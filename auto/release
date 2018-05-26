@@ -1,14 +1,14 @@
 #! /bin/bash -e
 
 REPOSITORY="mylib/hello-spring"
-
+BUILD_NUMBER=0.0.${BUILD_ID-DEV}
 
 cd $(dirname ${BASH_SOURCE[0]})/..
 
-./auto/dev gradle clean build
+./auto/test gradle clean build
 
 docker build --build-arg JAR_FILE=./build/libs/hello-spring-latest.jar \
- -t ${REPOSITORY}:${BUILD_ID-DEV} .
+ -t ${REPOSITORY}:${BUILD_NUMBER} .
 
 # docker push ${REPOSITORY}:${FULL_VERSION}
 # docker tag ${REPOSITORY}:${FULL_VERSION} ${REPOSITORY}:latest
