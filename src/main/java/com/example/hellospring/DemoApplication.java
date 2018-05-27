@@ -15,7 +15,7 @@ public class DemoApplication implements EnvironmentAware {
 
 	@RequestMapping("/")
 	public String home() {
-		return "Hello Spring World: " + appEnv;
+		return "Hello Thoughtworks.: " + appEnv;
 	}
 
 	public static void main(String[] args) {
